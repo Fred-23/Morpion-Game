@@ -14,8 +14,8 @@ struct ContentView: View {
     @State var object = "pencil"
     @State var counter = 0
     var body: some View {
-        VStack {
-            Button("Morpion Game") {
+        VStack (){
+            Button("Morpion") {
                 switch counter {
                 case 0:
                     object = square_sf
@@ -40,25 +40,44 @@ struct ContentView: View {
                 HStack{
                     
                     
-                    VStack {
+                    VStack() {
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                     }
+                    
                     
                     Spacer()
                         .frame(width: 90.0)
                         
                     
-                    VStack {
+                    VStack(alignment: .leading){
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                     }
                     Spacer()
@@ -66,16 +85,25 @@ struct ContentView: View {
                     
                     VStack {
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                         Image(systemName:object)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50.0, height: 50.0)
                         Spacer()
                     }
                     
                     
                 }
-                .padding(.top, 90.0)
+                .padding(.top, 60.0)
                 .frame(width: 350.0, height: 400.0)
                 Image("Grid Morpion")
                     .resizable()
