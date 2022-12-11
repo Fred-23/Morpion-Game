@@ -42,7 +42,6 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .foregroundColor(Color.blue)
-                .padding(15.0)
             Spacer()
             ZStack {
                 HStack{
@@ -51,7 +50,7 @@ struct ContentView: View {
 
                         Button {
                             print("A1")
-                            object = circle_sf
+                            //object = circle_sf
                         } label: {
                             Image(systemName:object)
                                 .resizable()
@@ -90,7 +89,7 @@ struct ContentView: View {
                     
                     VStack() {
                         Button {
-                            print("A1")
+                            print("B1")
                         } label: {
                             Image(systemName:object)
                                 .resizable()
@@ -100,7 +99,7 @@ struct ContentView: View {
                         }
                         Spacer()
                         Button {
-                            print("A2")
+                            print("B2")
                         } label: {
                             Image(systemName:object)
                                 .resizable()
@@ -110,7 +109,7 @@ struct ContentView: View {
                         }
                         Spacer()
                         Button {
-                            print("A3")
+                            print("B3")
                         } label: {
                             Image(systemName:object)
                                 .resizable()
@@ -126,7 +125,7 @@ struct ContentView: View {
                     
                     VStack() {
                         Button {
-                            print("A1")
+                            print("C1")
                         } label: {
                             Image(systemName:object)
                                 .resizable()
@@ -136,7 +135,7 @@ struct ContentView: View {
                         }
                         Spacer()
                         Button {
-                            print("A2")
+                            print("C2")
                         } label: {
                             Image(systemName:object)
                                 .resizable()
@@ -146,7 +145,7 @@ struct ContentView: View {
                         }
                         Spacer()
                         Button {
-                            print("A3")
+                            print("C3")
                         } label: {
                             Image(systemName:object)
                                 .resizable()
@@ -167,7 +166,7 @@ struct ContentView: View {
                 Image("Grid Morpion")
                     .resizable()
                     //.padding(.bottom, 30.0)
-                    .frame(width: 350.0, height: 400.0)
+                    .frame(width: 350.0, height: 350.0)
                 
                 
             }
