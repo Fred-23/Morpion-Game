@@ -10,8 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var square_sf = "square.circle.fill"
     var circle_sf = "circle.circle.fill"
-    var blank_sf = "pencil"
-    @State var object = "pencil"
+    var blank_sf = "circle"
+    @State var opacity = 0.8
+    @State var object = "circle"
     @State var counter = 0
     func morpion () {
         
@@ -27,15 +28,19 @@ struct ContentView: View {
                 switch counter {
                 case 0:
                     object = square_sf
+                    opacity = 0.8
                     counter += 1
                 case 1:
                     object = circle_sf
+                    opacity = 0.8
                     counter += 1
                 case 2:
                     object = blank_sf
+                    opacity = 0
                     counter += 1
                 default:
                     object = blank_sf
+                    opacity = 0
                     counter = 0
                 }
             }
@@ -57,6 +62,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 //.foregroundColor(Color.white)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         Spacer()
                         Button {
@@ -67,6 +73,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         Spacer()
                         Button {
@@ -77,6 +84,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         
                         Spacer()
@@ -96,6 +104,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         Spacer()
                         Button {
@@ -106,6 +115,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         Spacer()
                         Button {
@@ -116,6 +126,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         
                         Spacer()
@@ -132,6 +143,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         Spacer()
                         Button {
@@ -142,6 +154,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         Spacer()
                         Button {
@@ -152,6 +165,7 @@ struct ContentView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(Color.blue)
                                 .frame(width: 50.0, height: 50.0)
+                                .opacity(opacity)
                         }
                         
                         Spacer()
