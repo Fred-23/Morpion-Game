@@ -1,4 +1,11 @@
 //
+//  TwoPlayerView.swift
+//  Morpion Game
+//
+//  Created by Frédéric ALPHONSE on 30/01/2023.
+//
+
+//
 //  ContentView.swift
 //  Morpion Game
 //
@@ -8,37 +15,52 @@
 import SwiftUI
 //La couleur blanche ne marche pas avec le mode sombre
 
-struct ContentView: View {
+struct TwoPlayerView: View {
     var square_sf = "square.circle.fill"
     var circle_sf = "circle.circle.fill"
     var blank_sf = "circle"
     //@State var grid = [[String]](repeating: [String](repeating: "circle", count: 3), count: 3)
-    var currentPlayer = "circle"
+    //@State var check_board  = [[String]](repeating: [String](repeating: "", count: 3), count: 3)
+    @State var currentPlayer = "circle"
     @State var board = [[String]](repeating: [String](repeating: "", count: 3), count: 3)
 
     @State var opacity = 0.8
     @State var counter = 0
-    func morpion () {
-            print("Debug")
+    
+    
+    func round_game () {
+            print("Counter")
+    /*switch counter {
+        case 0:
+            currentPlayer = "square"
+            opacity = 0.8
+            counter += 1
+    
+        case 1:
+            currentPlayer = "circle"
+            opacity = 0.8
+            counter += 1
+        default:
+            opacity = 0.8
+            counter = 0
+        }*/
+        if(currentPlayer=="circle"){
+            //2P
+            currentPlayer = "square"
         }
+        else{
+            //1P
+            currentPlayer = "circle"
+        }
+        
+    }
     
     
     var body: some View {
         VStack (){
             
             Button("Morpion") {
-                switch counter {
-                case 0:
-                    opacity = 0.8
-                    counter += 1
-            
-                case 1:
-                    opacity = 0
-                    counter += 1
-                default:
-                    opacity = 0
-                    counter = 0
-                }
+               
             }
                 .font(.largeTitle)
                 .fontWeight(.black)
@@ -51,7 +73,9 @@ struct ContentView: View {
 
                         Button {
                             print("A1")
+                            
                             board[0][0] = currentPlayer
+                            round_game ()
                             //object = circle_sf
                         } label: {
                             Image(systemName:board[0][0])
@@ -65,6 +89,7 @@ struct ContentView: View {
                         Button {
                             print("A2")
                             board[0][1] = currentPlayer
+                            round_game()
                         } label: {
                             Image(systemName:board[0][1])
                                 .resizable()
@@ -77,6 +102,7 @@ struct ContentView: View {
                         Button {
                             print("A3")
                             board[0][2] = currentPlayer
+                            round_game()
                         } label: {
                             Image(systemName:board[0][2])
                                 .resizable()
@@ -99,6 +125,7 @@ struct ContentView: View {
                             print("B1")
                             //Bloquer un fois touche
                             board[1][0] = currentPlayer
+                            round_game()
                             
                         } label: {
                             Image(systemName:board[1][0])
@@ -112,6 +139,7 @@ struct ContentView: View {
                         Button {
                             print("B2")
                             board[1][1] = currentPlayer
+                            round_game()
                         } label: {
                             Image(systemName:board[1][1] )
                                 .resizable()
@@ -124,6 +152,7 @@ struct ContentView: View {
                         Button {
                             print("B3")
                             board[1][2] = currentPlayer
+                            round_game()
                         } label: {
                             Image(systemName:board[1][2])
                                 .resizable()
@@ -142,6 +171,7 @@ struct ContentView: View {
                         Button {
                             print("C1")
                             board[2][0] = currentPlayer
+                            round_game()
                         } label: {
                             Image(systemName:board[2][0] )
                                 .resizable()
@@ -154,6 +184,7 @@ struct ContentView: View {
                         Button {
                             print("C2")
                             board[2][1] = currentPlayer
+                            round_game()
                         } label: {
                             Image(systemName:board[2][1])
                                 .resizable()
@@ -166,6 +197,7 @@ struct ContentView: View {
                         Button {
                             print("C3")
                             board[2][2] = currentPlayer
+                            round_game()
                         } label: {
                             Image(systemName:board[2][2])
                                 .resizable()
@@ -209,7 +241,7 @@ struct ContentView: View {
                 }
                 Spacer()
                 VStack {
-                    Text("CPU")
+                    Text("Player2")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Text("0")
@@ -225,8 +257,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TwoPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TwoPlayerView()
     }
 }
+

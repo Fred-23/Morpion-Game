@@ -25,7 +25,7 @@ struct MenuView: View {
                                 Image(systemName:"tray.fill")
                                 //print("One Player")
                             }
-                            NavigationLink(destination: ContentView()) {
+                            NavigationLink(destination: TwoPlayerView()) {
                                 Text("Two player")
                                 Image(systemName:"tray.2.fill")
                                 //print("Two Player")
