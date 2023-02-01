@@ -28,38 +28,79 @@ struct TwoPlayerView: View {
     @State var opacity = 0.8
     @State var counter = 0
     
+    //Score for players
+    @State private var ScoreP1 = 0
+    @State private var ScoreP2 = 0
 
     func checkWin() -> Bool {
-        // Vérifier les lignes
-        for row in 0...2 {
-            if board[row][0] == board[row][1] && board[row][1] == board[row][2] && board[row][0] != "" {
-                print("WIN");
+            // Vérifier les lignes
+            for row in 0...2 {
+                if board[row][0] == board[row][1] && board[row][1] == board[row][2] && board[row][0] != "" {
+                    if(board[row][0] == "circle"){
+                        ScoreP1 += 1
+                        print("P1");
+                    }
+                    else{
+                        ScoreP2 += 1
+                        print("P1");
+                    }
+                    print("WIN ?");
+                    return true
+                }
+            }
+            
+            // Vérifier les colonnes
+            for col in 0...2 {
+                if board[0][col] == board[1][col] && board[1][col] == board[2][col] && board[0][col] != "" {
+                    if(board[0][col] == "circle"){
+                        ScoreP1 += 1
+                        print("P1");
+                    }
+                    else{
+                        ScoreP2 += 1
+                        
+                    }
+                    print("WIN ?");
+                    return true
+                }
+            }
+            
+            // Vérifier les diagonales
+            if board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != "" {
+                if(board[0][0] == "circle"){
+                    ScoreP1 += 1
+                    print("P1");
+                }
+                else{
+                    ScoreP2 += 1
+                    
+                }
+                print("WIN ?");
                 return true
             }
-        }
-        
-        // Vérifier les colonnes
-        for col in 0...2 {
-            if board[0][col] == board[1][col] && board[1][col] == board[2][col] && board[0][col] != "" {
-                print("WIN");
+            if board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != "" {
+                if(board[0][2] == "circle"){
+                    ScoreP1 += 1
+                    print("P1");
+                }
+                else{
+                    ScoreP2 += 1
+                    
+                }
+                print("WIN ?");
                 return true
             }
+            
+            return false
+            
         }
-        
-        // Vérifier les diagonales
-        if board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != "" {
-            print("WIN");
-            return true
-        }
-        if board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != "" {
-            print("WIN");
-            return true
-        }
-        
-        return false
-        
+
+    func resetBoard() {
+      board = [["", "", ""],
+               ["", "", ""],
+               ["", "", ""]]
+      currentPlayer = "circle"
     }
-    
     func round_game () {
             print(currentPlayer)
     /*switch counter {
@@ -92,7 +133,7 @@ struct TwoPlayerView: View {
         VStack (){
             
             Button("Morpion") {
-               
+                resetBoard()
             }
                 .font(.largeTitle)
                 .fontWeight(.black)
@@ -296,7 +337,7 @@ struct TwoPlayerView: View {
                     Text("Player")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                    Text("0")
+                    Text(String(ScoreP1))
                         .font(.title)
                     
                     Spacer()
@@ -306,7 +347,7 @@ struct TwoPlayerView: View {
                     Text("Player2")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                    Text("0")
+                    Text(String(ScoreP2))
                         .font(.title)
                     Spacer()
                 }
