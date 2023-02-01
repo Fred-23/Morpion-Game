@@ -19,6 +19,7 @@ struct TwoPlayerView: View {
     var square_sf = "square.circle.fill"
     var circle_sf = "circle.circle.fill"
     var blank_sf = "circle"
+
     //@State var grid = [[String]](repeating: [String](repeating: "circle", count: 3), count: 3)
     //@State var check_board  = [[String]](repeating: [String](repeating: "", count: 3), count: 3)
     @State var currentPlayer = "circle"
@@ -27,9 +28,40 @@ struct TwoPlayerView: View {
     @State var opacity = 0.8
     @State var counter = 0
     
+
+    func checkWin() -> Bool {
+        // Vérifier les lignes
+        for row in 0...2 {
+            if board[row][0] == board[row][1] && board[row][1] == board[row][2] && board[row][0] != "" {
+                print("WIN");
+                return true
+            }
+        }
+        
+        // Vérifier les colonnes
+        for col in 0...2 {
+            if board[0][col] == board[1][col] && board[1][col] == board[2][col] && board[0][col] != "" {
+                print("WIN");
+                return true
+            }
+        }
+        
+        // Vérifier les diagonales
+        if board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != "" {
+            print("WIN");
+            return true
+        }
+        if board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != "" {
+            print("WIN");
+            return true
+        }
+        
+        return false
+        
+    }
     
     func round_game () {
-            print("Counter")
+            print(currentPlayer)
     /*switch counter {
         case 0:
             currentPlayer = "square"
@@ -70,12 +102,16 @@ struct TwoPlayerView: View {
                 HStack{
                     
                     VStack() {
-
                         Button {
                             print("A1")
                             
-                            board[0][0] = currentPlayer
+                           if(board[0][0]==""){
+                                board[0][0] = currentPlayer
+                            }
+                                
                             round_game ()
+                            checkWin()
+                                
                             //object = circle_sf
                         } label: {
                             Image(systemName:board[0][0])
@@ -84,11 +120,16 @@ struct TwoPlayerView: View {
                                 //.foregroundColor(Color.white)
                                 .frame(width: 50.0, height: 50.0)
                                 .opacity(opacity)
+                               
                         }
+                        
                         Spacer()
                         Button {
                             print("A2")
-                            board[0][1] = currentPlayer
+                            if(board[0][1]==""){
+                                 board[0][1] = currentPlayer
+                             }
+                            checkWin()
                             round_game()
                         } label: {
                             Image(systemName:board[0][1])
@@ -101,7 +142,10 @@ struct TwoPlayerView: View {
                         Spacer()
                         Button {
                             print("A3")
-                            board[0][2] = currentPlayer
+                            if(board[0][2]=="" ){
+                                board[0][2] = currentPlayer
+                        }
+                            checkWin()
                             round_game()
                         } label: {
                             Image(systemName:board[0][2])
@@ -124,7 +168,10 @@ struct TwoPlayerView: View {
                         Button {
                             print("B1")
                             //Bloquer un fois touche
-                            board[1][0] = currentPlayer
+                            if(board[1][0]=="" ){
+                                board[1][0] = currentPlayer
+                        }
+                            checkWin()
                             round_game()
                             
                         } label: {
@@ -138,7 +185,10 @@ struct TwoPlayerView: View {
                         Spacer()
                         Button {
                             print("B2")
-                            board[1][1] = currentPlayer
+                            if(board[1][1]=="" ){
+                                board[1][1] = currentPlayer
+                        }
+                            checkWin()
                             round_game()
                         } label: {
                             Image(systemName:board[1][1] )
@@ -151,7 +201,10 @@ struct TwoPlayerView: View {
                         Spacer()
                         Button {
                             print("B3")
-                            board[1][2] = currentPlayer
+                            if(board[1][2]=="" ){
+                                board[1][2] = currentPlayer
+                        }
+                            checkWin()
                             round_game()
                         } label: {
                             Image(systemName:board[1][2])
@@ -170,7 +223,10 @@ struct TwoPlayerView: View {
                     VStack() {
                         Button {
                             print("C1")
-                            board[2][0] = currentPlayer
+                            if(board[2][0]=="" ){
+                                board[2][0] = currentPlayer
+                        }
+                            checkWin()
                             round_game()
                         } label: {
                             Image(systemName:board[2][0] )
@@ -183,7 +239,10 @@ struct TwoPlayerView: View {
                         Spacer()
                         Button {
                             print("C2")
-                            board[2][1] = currentPlayer
+                            if(board[2][1]=="" ){
+                                board[2][1] = currentPlayer
+                        }
+                            checkWin()
                             round_game()
                         } label: {
                             Image(systemName:board[2][1])
@@ -196,7 +255,10 @@ struct TwoPlayerView: View {
                         Spacer()
                         Button {
                             print("C3")
-                            board[2][2] = currentPlayer
+                            if(board[2][2]=="" ){
+                                board[2][2] = currentPlayer
+                        }
+                            checkWin()
                             round_game()
                         } label: {
                             Image(systemName:board[2][2])

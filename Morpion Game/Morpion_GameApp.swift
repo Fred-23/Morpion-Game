@@ -11,7 +11,7 @@ import SwiftUI
 struct Morpion_GameApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MenuView()
         }
     }
 }
