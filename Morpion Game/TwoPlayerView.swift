@@ -139,7 +139,7 @@ struct TwoPlayerView: View {
         }*/
         if(currentPlayer==firstPlayer){
             //2P
-            currentPlayer = "square"
+            currentPlayer = secondPlayer
             Win_Text = "Player 1 WON"
             Current_color = P2_color
         }

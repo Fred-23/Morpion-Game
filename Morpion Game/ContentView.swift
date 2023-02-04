@@ -89,6 +89,7 @@
                             let row = i/3
                             let col = i%3
                             board[row][col] = secondPlayer
+                            color_b[row][col] = P2_color
                             let score = minimax(depth: depth + 1, isMaximizing: false)
                             board[row][col] = ""
                             bestScore = max(score, bestScore)
@@ -101,7 +102,8 @@
                         if board[i/3][i%3] == "" {
                             let row = i/3
                             let col = i%3
-                            board[row][col] = "circle"
+                            board[row][col] = secondPlayer
+                            color_b[row][col] = P2_color
                             let score = minimax( depth: depth + 1, isMaximizing: true)
                             board[row][col] = ""
                             bestScore = min(score, bestScore)
@@ -187,33 +189,32 @@
                      ["", "", ""],
                      ["", "", ""]]
             
-            if(currentPlayer=="circle"){
+            if(currentPlayer==firstPlayer){
                 Current_color = P1_color
             }
                 else{
-                    
                     Current_color = P2_color
                 }
             
         }
         func round_game () {
-                print(currentPlayer)
+            print(currentPlayer)
         
             if(currentPlayer==firstPlayer){
-                //2P
-                //Add IA turn just here
-                Current_color = P2_color
+                //IA
                 IA_Morpion()
+                //currentPlayer = secondPlayer
                 Win_Text = "Player 1 WON"
-                
+                Current_color = P2_color
             }
             
-            else{
+            else if (currentPlayer == secondPlayer){
                 //1P
                 
                 currentPlayer = firstPlayer
-                Win_Text = "CPU WON"
+                Win_Text = "Player 2 WON"
                 Current_color = P1_color
+                
             }
             
         }
