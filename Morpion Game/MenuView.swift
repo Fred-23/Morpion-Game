@@ -34,6 +34,11 @@ struct MenuView: View {
                                 Image(systemName:"gearshape.fill")
                                 //print("Settings")
                             }
+                            NavigationLink(destination: MusicView()) {
+                                Text("Music")
+                                Image(systemName:"music.note")
+                                //print("Settings")
+                            }
                         }
                         .navigationBarTitle(Text("Menu"))
                     }

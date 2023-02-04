@@ -15,6 +15,7 @@
 		C9334FB6298E8C64009078A8 /* VolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9334FB5298E8C64009078A8 /* VolumeSlider.swift */; };
 		C9334FBA298E9007009078A8 /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9334FB9298E9007009078A8 /* MusicView.swift */; };
 		C9334FC6298E9AEC009078A8 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = C9334FC5298E9AEC009078A8 /* SFSymbolsPicker */; };
+		C977F618298F06D800CC931D /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C977F617298F06D800CC931D /* music.mp3 */; };
 		C981226D298735600007F6D2 /* TwoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C981226C298735600007F6D2 /* TwoPlayerView.swift */; };
 		C9C54B202946754800B4636F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C54B1F2946754800B4636F /* MenuView.swift */; };
 /* End PBXBuildFile section */
@@ -28,7 +29,7 @@
 		C9334FAF298E818D009078A8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C9334FB5298E8C64009078A8 /* VolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSlider.swift; sourceTree = "<group>"; };
 		C9334FB9298E9007009078A8 /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
-		C9334FBD298E94D9009078A8 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		C977F617298F06D800CC931D /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		C981226C298735600007F6D2 /* TwoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerView.swift; sourceTree = "<group>"; };
 		C9C54B1F2946754800B4636F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				C929098D293DFFD000679542 /* Morpion_GameApp.swift */,
-				C9334FBD298E94D9009078A8 /* music.mp3 */,
 				C9334FAF298E818D009078A8 /* SettingsView.swift */,
 				C9334FB5298E8C64009078A8 /* VolumeSlider.swift */,
 				C9334FB9298E9007009078A8 /* MusicView.swift */,
@@ -74,6 +74,7 @@
 				C981226C298735600007F6D2 /* TwoPlayerView.swift */,
 				C9C54B1F2946754800B4636F /* MenuView.swift */,
 				C9290991293DFFD100679542 /* Assets.xcassets */,
+				C977F617298F06D800CC931D /* music.mp3 */,
 				C9290993293DFFD100679542 /* Preview Content */,
 			);
 			path = "Morpion Game";
@@ -160,6 +161,7 @@
 			files = (
 				C9290995293DFFD100679542 /* Preview Assets.xcassets in Resources */,
 				C9290992293DFFD100679542 /* Assets.xcassets in Resources */,
+				C977F618298F06D800CC931D /* music.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,10 +306,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Morpion Game/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Morpion\\ Game/music.mp3 Morpion\\ Game/Preview\\ Content";
 				DEVELOPMENT_TEAM = 53BB887GNG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Morpion;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -332,10 +336,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Morpion Game/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "Morpion\\ Game/music.mp3 Morpion\\ Game/Preview\\ Content";
 				DEVELOPMENT_TEAM = 53BB887GNG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Morpion;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
