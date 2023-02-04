@@ -29,7 +29,7 @@ struct TwoPlayerView: View {
     
     @State var P1_color = Color.blue
     @State var P2_color = Color.red
-    @State var Current_color = Color.red
+    @State var Current_color = Color.blue
     @State var board = [[String]](repeating: [String](repeating: "", count: 3), count: 3)
     @State var color_b = [[Color.blue, Color.blue, Color.blue],
              [Color.blue, Color.blue, Color.blue],
@@ -61,7 +61,6 @@ struct TwoPlayerView: View {
                     return true
                 }
             }
-            
             // Vérifier les colonnes
             for col in 0...2 {
                 if board[0][col] == board[1][col] && board[1][col] == board[2][col] && board[0][col] != "" {
@@ -109,12 +108,10 @@ struct TwoPlayerView: View {
             return false
             
         }
-
     func resetBoard() {
         board = [["", "", ""],
                  ["", "", ""],
                  ["", "", ""]]
-        //currentPlayer = firstPlayer
         
         if(currentPlayer=="circle"){
             Current_color = P1_color
@@ -158,6 +155,7 @@ struct TwoPlayerView: View {
     
     
     var body: some View {
+        
         VStack (){
             
             Button("Morpion") {
@@ -175,7 +173,7 @@ struct TwoPlayerView: View {
                             
                            if(board[0][0]==""){
                                 board[0][0] = currentPlayer
-                               color_b[0][0] = Current_color
+                                color_b[0][0] = Current_color
                                
                             }
                             
@@ -193,6 +191,8 @@ struct TwoPlayerView: View {
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
                                      Text(Win_Text)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
                                    }
                                
                         }
@@ -202,7 +202,7 @@ struct TwoPlayerView: View {
                             print("A2")
                             if(board[0][1]==""){
                                  board[0][1] = currentPlayer
-                                color_b[0][1] = Current_color
+                                 color_b[0][1] = Current_color
                              }
                            
                             showPopUp=checkWin()
@@ -216,6 +216,8 @@ struct TwoPlayerView: View {
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
                                      Text(Win_Text)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
                                    }
                         }
                         Spacer()
@@ -237,6 +239,8 @@ struct TwoPlayerView: View {
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
                                      Text(Win_Text)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
                                    }
                         }
                         
@@ -251,7 +255,7 @@ struct TwoPlayerView: View {
                     VStack() {
                         Button {
                             print("B1")
-                            //Bloquer un fois touche
+                            //Block one time
                             if(board[1][0]=="" ){
                                 board[1][0] = currentPlayer
                                 color_b[1][0] = Current_color
@@ -268,6 +272,8 @@ struct TwoPlayerView: View {
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
                                      Text(Win_Text)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
                                    }
                         }
                         Spacer()
@@ -278,9 +284,6 @@ struct TwoPlayerView: View {
                                 color_b[1][1] = Current_color
                         }
                            
-                                
-                                
-                             
                             showPopUp=checkWin()
                             round_game()
                         } label: {
@@ -292,6 +295,8 @@ struct TwoPlayerView: View {
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
                                      Text(Win_Text)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
                                    }
                         }
                         Spacer()
@@ -312,6 +317,8 @@ struct TwoPlayerView: View {
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
                                      Text(Win_Text)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
                                    }
                         }
                         
@@ -338,6 +345,8 @@ struct TwoPlayerView: View {
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
                                      Text(currentPlayer)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
                                    }
                         }
                         Spacer()
@@ -358,6 +367,8 @@ struct TwoPlayerView: View {
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
                                      Text(Win_Text)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
                                    }
                         }
                         Spacer()
@@ -377,13 +388,15 @@ struct TwoPlayerView: View {
                                 .frame(width: 50.0, height: 50.0)
                                 .opacity(opacity)
                                 .sheet(isPresented: $showPopUp) {
-                                     Text(Win_Text)
+                                    Text(Win_Text)
+                                        .controlSize(/*@START_MENU_TOKEN@*/.regular/*@END_MENU_TOKEN@*/)
+                                        .font(.largeTitle)
+                                       
                                    }
                         }
                         
                         Spacer()
                     }
-                    
                     
                 }
                 .zIndex(1)
@@ -406,12 +419,13 @@ struct TwoPlayerView: View {
                 VStack {
                     Image(systemName: firstPlayer)
                         .foregroundColor(P1_color)
+                        .font(.largeTitle)
                     Text("P1")
         
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Text(String(ScoreP1))
-                        .font(.title)
+                        .font(.largeTitle)
                     
                     Spacer()
                 }
@@ -419,12 +433,14 @@ struct TwoPlayerView: View {
                 VStack {
                     Image(systemName: secondPlayer)
                         .foregroundColor(P2_color)
+                        .font(.largeTitle)
                     Text("P2")
                     
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Text(String(ScoreP2))
-                        .font(.title)
+                        .font(.largeTitle)
+                    
                     Spacer()
                 }
                 Spacer()
