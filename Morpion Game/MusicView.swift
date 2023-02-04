@@ -5,7 +5,7 @@
 //  Created by Frédéric ALPHONSE on 04/02/2023.
 //
 import SwiftUI
-import AVKit
+import AVFoundation
 
 struct MusicView: View {
     @State var isPlaying: Bool = false
@@ -15,37 +15,40 @@ struct MusicView: View {
             Button(action: {
                 self.isPlaying.toggle()
                 if self.isPlaying {
-                    MusicPlayer.shared.play(fileName: "music", fileExtension: "mp3")
+                    self.playBackgroundMusic()
                 } else {
-                    MusicPlayer.shared.pause()
+                    self.pauseBackgroundMusic()
                 }
             }) {
                 Image(systemName: self.isPlaying ? "pause.fill" : "play.fill")
             }
         }
     }
-}
-
-class MusicPlayer {
-    static let shared = MusicPlayer()
     
-    private var player = AVPlayer()
-    
-    func play(fileName: String, fileExtension: String) {
-        if let url = Bundle.main.url(forResource: fileName, withExtension: fileExtension) {
-            let playerItem = AVPlayerItem(url: url)
-            player = AVPlayer(playerItem: playerItem)
-            player.volume = 1.0
+    func playBackgroundMusic() {
+        guard let url = Bundle.main.url(forResource: "music", withExtension: "mp3") else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.numberOfLoops = -1
+            player.prepareToPlay()
             player.play()
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
-    func pause() {
-        player.pause()
-    }
-    
-    func resume() {
-        player.play()
+    func pauseBackgroundMusic() {
+        guard let url = Bundle.main.url(forResource: "music", withExtension: "mp3") else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.pause()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 
