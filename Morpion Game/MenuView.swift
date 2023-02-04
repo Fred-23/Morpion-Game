@@ -16,7 +16,6 @@ struct MenuView: View {
                 
         VStack {
             Text("Morpion Game by Fred")
-            Spacer()
             NavigationView {
                         //Jump to another view or fix some parameters and use the same view (best option)
                         List {
@@ -30,7 +29,7 @@ struct MenuView: View {
                                 Image(systemName:"tray.2.fill")
                                 //print("Two Player")
                             }
-                            NavigationLink(destination: ContentView()) {
+                            NavigationLink(destination: SettingsView()) {
                                 Text("Settings")
                                 Image(systemName:"gearshape.fill")
                                 //print("Settings")

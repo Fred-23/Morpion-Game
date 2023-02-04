@@ -158,9 +158,13 @@ struct TwoPlayerView: View {
         
         VStack (){
             
-            Button("Morpion") {
+            Button{
                 resetBoard()
+            }label: {
+                Text("Morpion")
+                Image(systemName: "arrow.clockwise.circle")
             }
+            
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .foregroundColor(Color.blue)
