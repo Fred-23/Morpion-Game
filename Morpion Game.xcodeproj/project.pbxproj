@@ -19,6 +19,7 @@
 		C981226D298735600007F6D2 /* TwoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C981226C298735600007F6D2 /* TwoPlayerView.swift */; };
 		C9C54B202946754800B4636F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C54B1F2946754800B4636F /* MenuView.swift */; };
 		C9D6FCB929901D8000BDAEFD /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6FCB829901D8000BDAEFD /* BackgroundMusic.swift */; };
+		C9D6FCBB2990499B00BDAEFD /* SharedParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6FCBA2990499B00BDAEFD /* SharedParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C981226C298735600007F6D2 /* TwoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerView.swift; sourceTree = "<group>"; };
 		C9C54B1F2946754800B4636F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C9D6FCB829901D8000BDAEFD /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
+		C9D6FCBA2990499B00BDAEFD /* SharedParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				C929098D293DFFD000679542 /* Morpion_GameApp.swift */,
+				C9D6FCBA2990499B00BDAEFD /* SharedParameters.swift */,
 				C9334FAF298E818D009078A8 /* SettingsView.swift */,
 				C9334FB5298E8C64009078A8 /* VolumeSlider.swift */,
 				C9D6FCB829901D8000BDAEFD /* BackgroundMusic.swift */,
@@ -177,6 +180,7 @@
 			files = (
 				C9334FB0298E818D009078A8 /* SettingsView.swift in Sources */,
 				C9D6FCB929901D8000BDAEFD /* BackgroundMusic.swift in Sources */,
+				C9D6FCBB2990499B00BDAEFD /* SharedParameters.swift in Sources */,
 				C981226D298735600007F6D2 /* TwoPlayerView.swift in Sources */,
 				C9334FB6298E8C64009078A8 /* VolumeSlider.swift in Sources */,
 				C9290990293DFFD000679542 /* ContentView.swift in Sources */,

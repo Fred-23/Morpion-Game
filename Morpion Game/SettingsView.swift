@@ -8,10 +8,12 @@
 import SwiftUI
 import SFSymbolsPicker
 
+
 struct SettingsView: View {
     //Local variable but will be later link to the other varibles of other views
-    @State private var iconP1 = "circle"
-    @State private var iconP2 = "square"
+    //@State var iconP1 = "circle"
+    @ObservedObject var sharedState: SharedParameters
+    @State public var iconP2 = "square"
     @State private var isP1 = false
     @State private var isP2 = false
     @State private var C_P1 = Color.blue
@@ -21,6 +23,10 @@ struct SettingsView: View {
     @ObservedObject var backgroundMusic = BackgroundMusic()
     var body: some View {
         
+        
+            
+        
+
         NavigationView{
             
             List() {
@@ -41,16 +47,17 @@ struct SettingsView: View {
                     Button(action: {
                         withAnimation {
                             isP1.toggle()
+                         
                         }
                     }, label: {
                         HStack {
                             Text("Icon P1")
                             Spacer()
-                            Image(systemName: iconP1).font(.title3)
+                            Image(systemName: sharedState.iconP1).font(.title3)
                         }
                     })
                     
-                SFSymbolsPicker(isPresented: $isP1, icon: $iconP1, category: .forms, axis: .vertical, haptic: true)
+                SFSymbolsPicker(isPresented: $isP1, icon: $sharedState.iconP1, category: .forms, axis: .vertical, haptic: true)
                 
                 Button(action: {
                     withAnimation {
@@ -116,6 +123,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(sharedState: SharedParameters())
     }
 }

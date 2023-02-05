@@ -4,8 +4,6 @@
 //
 //  Created by Frédéric ALPHONSE on 30/01/2023.
 //
-
-//
 //  ContentView.swift
 //  Morpion Game
 //
@@ -13,22 +11,26 @@
 //
 
 import SwiftUI
-//La couleur blanche ne marche pas avec le mode sombre
 
 struct TwoPlayerView: View {
     var square_sf = "square.circle.fill"
     var circle_sf = "circle.circle.fill"
     var blank_sf = "circle"
-
+  
     //@State var grid = [[String]](repeating: [String](repeating: "circle", count: 3), count: 3)
     //@State var check_board  = [[String]](repeating: [String](repeating: "", count: 3), count: 3)
     @State var currentPlayer = "circle"
-    @State var firstPlayer = "circle"
+    @ObservedObject var sharedState: SharedParameters
+    
+    //let contentView = ContentView().environmentObject(sharedState)
+    
+    
     @State var secondPlayer = "square"
     
-    
     @State var P1_color = Color.blue
+    
     @State var P2_color = Color.red
+    
     @State var Current_color = Color.blue
     @State var board = [[String]](repeating: [String](repeating: "", count: 3), count: 3)
     @State var color_b = [[Color.blue, Color.blue, Color.blue],
@@ -48,7 +50,7 @@ struct TwoPlayerView: View {
             // Vérifier les lignes
             for row in 0...2 {
                 if board[row][0] == board[row][1] && board[row][1] == board[row][2] && board[row][0] != "" {
-                    if(board[row][0] == firstPlayer){
+                    if(board[row][0] == sharedState.iconP1){
                         ScoreP1 += 1
                         print("P1");
                     }
@@ -64,7 +66,7 @@ struct TwoPlayerView: View {
             // Vérifier les colonnes
             for col in 0...2 {
                 if board[0][col] == board[1][col] && board[1][col] == board[2][col] && board[0][col] != "" {
-                    if(board[0][col] == firstPlayer){
+                    if(board[0][col] == sharedState.iconP1){
                         ScoreP1 += 1
                         print("P1");
                     }
@@ -80,7 +82,7 @@ struct TwoPlayerView: View {
             
             // Vérifier les diagonales
             if board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != "" {
-                if(board[0][0] == firstPlayer){
+                if(board[0][0] == sharedState.iconP1){
                     ScoreP1 += 1
                     print("P1");
                 }
@@ -92,7 +94,7 @@ struct TwoPlayerView: View {
                 return true
             }
             if board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != "" {
-                if(board[0][2] == firstPlayer){
+                if(board[0][2] == sharedState.iconP1){
                     ScoreP1 += 1
                     print("P1");
                 }
@@ -130,14 +132,14 @@ struct TwoPlayerView: View {
             counter += 1
     
         case 1:
-            currentPlayer = firstPlayer
+            currentPlayer = sharedState.iconP1
             opacity = 0.8
             counter += 1
         default:
             opacity = 0.8
             counter = 0
         }*/
-        if(currentPlayer==firstPlayer){
+        if(currentPlayer==sharedState.iconP1){
             //2P
             currentPlayer = secondPlayer
             Win_Text = "Player 1 WON"
@@ -146,7 +148,7 @@ struct TwoPlayerView: View {
         
         else{
             //1P
-            currentPlayer = firstPlayer
+            currentPlayer = sharedState.iconP1
             Win_Text = "Player 2 WON"
             Current_color = P1_color
         }
@@ -421,7 +423,7 @@ struct TwoPlayerView: View {
             HStack {
                 Spacer()
                 VStack {
-                    Image(systemName: firstPlayer)
+                    Image(systemName: sharedState.iconP1)
                         .foregroundColor(P1_color)
                         .font(.largeTitle)
                     Text("P1")
@@ -458,7 +460,7 @@ struct TwoPlayerView: View {
 
 struct TwoPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        TwoPlayerView()
+        TwoPlayerView(sharedState: SharedParameters())
     }
 }
 

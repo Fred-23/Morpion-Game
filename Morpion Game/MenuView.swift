@@ -10,7 +10,7 @@ import AVFoundation
 
 struct MenuView: View {
     @ObservedObject var backgroundMusic = BackgroundMusic()
-        
+    let sharedState = SharedParameters()
 
    
     var body: some View {
@@ -21,17 +21,13 @@ struct MenuView: View {
                     Text("One player")
                     Image(systemName:"tray.fill")
                 }
-                NavigationLink(destination: TwoPlayerView()) {
+                NavigationLink(destination: TwoPlayerView(sharedState: sharedState).environmentObject(sharedState)) {
                     Text("Two player")
                     Image(systemName:"tray.2.fill")
                 }
-                NavigationLink(destination: SettingsView()) {
+                NavigationLink(destination: SettingsView(sharedState: sharedState).environmentObject(sharedState)) {
                     Text("Settings")
                     Image(systemName:"gearshape.fill")
-                }
-                NavigationLink(destination: MusicView()) {
-                    Text("Music")
-                    Image(systemName:"music.note")
                 }
             }
             .navigationBarTitle(Text("Menu"))
