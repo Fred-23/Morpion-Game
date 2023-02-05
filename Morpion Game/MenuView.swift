@@ -9,32 +9,12 @@ import Foundation
 import AVFoundation
 
 struct MenuView: View {
-    let backgroundMusic = BackgroundMusic()
-
-    class BackgroundMusic {
-        var player: AVAudioPlayer?
+    @ObservedObject var backgroundMusic = BackgroundMusic()
         
-        func play() {
-            guard let url = Bundle.main.url(forResource: "music", withExtension: "mp3") else { return }
-            do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-                player = try AVAudioPlayer(contentsOf: url)
-                player?.numberOfLoops = -1
-                player?.prepareToPlay()
-                player?.play()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        
-        func pause() {
-            player?.pause()
-        }
-    }
 
+   
     var body: some View {
-        backgroundMusic.play()
+        //self.backgroundMusic.play()
         return NavigationView {
             List {
                 NavigationLink(destination: ContentView()) {

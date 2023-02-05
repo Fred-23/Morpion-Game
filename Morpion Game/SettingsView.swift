@@ -16,13 +16,27 @@ struct SettingsView: View {
     @State private var isP2 = false
     @State private var C_P1 = Color.blue
     @State private var C_P2 = Color.red
+    @State var volume: Float = 0.5
+    @State var isPlaying: Bool = true
+    @ObservedObject var backgroundMusic = BackgroundMusic()
     var body: some View {
         
         NavigationView{
             
             List() {
                 
-                    VolumeSlider()
+                Button(action: {
+                    self.isPlaying.toggle()
+                    if self.isPlaying {
+                        self.backgroundMusic.play()
+                    } else {
+                        self.backgroundMusic.pause()
+                    }
+                }) {
+                    Text("Background Music")
+                    Image(systemName: self.isPlaying ? "pause.fill" : "play.fill")
+                
+            }
                 
                     Button(action: {
                         withAnimation {

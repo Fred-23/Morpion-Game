@@ -41,7 +41,7 @@
         //Score for players
         @State private var ScoreP1 = 0
         @State private var ScoreP2 = 0
-        
+        @State private var showIAPopUp = false
         @State private var Win_Text = ""
     
 
@@ -89,7 +89,7 @@
                             let row = i/3
                             let col = i%3
                             board[row][col] = secondPlayer
-                            color_b[row][col] = P2_color
+                            
                             let score = minimax(depth: depth + 1, isMaximizing: false)
                             board[row][col] = ""
                             bestScore = max(score, bestScore)
@@ -103,7 +103,7 @@
                             let row = i/3
                             let col = i%3
                             board[row][col] = secondPlayer
-                            color_b[row][col] = P2_color
+                            
                             let score = minimax( depth: depth + 1, isMaximizing: true)
                             board[row][col] = ""
                             bestScore = min(score, bestScore)
@@ -184,6 +184,19 @@
                 return false
                 
             }
+        func coloringBoard() {
+            for col in 0...2 {
+                for row in 0...2 {
+                    if (board[row][col] == secondPlayer ){
+                        color_b [row][col] = P2_color
+                    }
+                    else if ( board[row][col] == firstPlayer){
+                        color_b [row][col] = P1_color
+                    }
+                }
+            }
+        }
+        
         func resetBoard() {
             board = [["", "", ""],
                      ["", "", ""],
@@ -203,7 +216,9 @@
             if(currentPlayer==firstPlayer){
                 //IA
                 IA_Morpion()
-                //currentPlayer = secondPlayer
+                coloringBoard()
+                showIAPopUp = checkWin()
+                
                 Win_Text = "Player 1 WON"
                 Current_color = P2_color
             }
@@ -221,7 +236,7 @@
         
         
         var body: some View {
-            
+          
             VStack (){
                 
                 Button{
@@ -518,7 +533,9 @@
                 Spacer()
             }
             .padding()
+            
         }
+        
     }
 
     struct ContentView_Previews: PreviewProvider {
