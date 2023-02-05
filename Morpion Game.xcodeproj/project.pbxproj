@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C929098E293DFFD000679542 /* Morpion_GameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929098D293DFFD000679542 /* Morpion_GameApp.swift */; };
-		C9290990293DFFD000679542 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929098F293DFFD000679542 /* ContentView.swift */; };
 		C9290992293DFFD100679542 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9290991293DFFD100679542 /* Assets.xcassets */; };
 		C9290995293DFFD100679542 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9290994293DFFD100679542 /* Preview Assets.xcassets */; };
 		C9334FB0298E818D009078A8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9334FAF298E818D009078A8 /* SettingsView.swift */; };
@@ -20,12 +19,12 @@
 		C9C54B202946754800B4636F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C54B1F2946754800B4636F /* MenuView.swift */; };
 		C9D6FCB929901D8000BDAEFD /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6FCB829901D8000BDAEFD /* BackgroundMusic.swift */; };
 		C9D6FCBB2990499B00BDAEFD /* SharedParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6FCBA2990499B00BDAEFD /* SharedParameters.swift */; };
+		C9D6FCBD29905CA800BDAEFD /* IAPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D6FCBC29905CA800BDAEFD /* IAPlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C929098A293DFFD000679542 /* Morpion Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Morpion Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C929098D293DFFD000679542 /* Morpion_GameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Morpion_GameApp.swift; sourceTree = "<group>"; };
-		C929098F293DFFD000679542 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C9290991293DFFD100679542 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9290994293DFFD100679542 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C9334FAF298E818D009078A8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -36,6 +35,7 @@
 		C9C54B1F2946754800B4636F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C9D6FCB829901D8000BDAEFD /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		C9D6FCBA2990499B00BDAEFD /* SharedParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedParameters.swift; sourceTree = "<group>"; };
+		C9D6FCBC29905CA800BDAEFD /* IAPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 				C9334FB5298E8C64009078A8 /* VolumeSlider.swift */,
 				C9D6FCB829901D8000BDAEFD /* BackgroundMusic.swift */,
 				C9334FB9298E9007009078A8 /* MusicView.swift */,
-				C929098F293DFFD000679542 /* ContentView.swift */,
+				C9D6FCBC29905CA800BDAEFD /* IAPlayerView.swift */,
 				C981226C298735600007F6D2 /* TwoPlayerView.swift */,
 				C9C54B1F2946754800B4636F /* MenuView.swift */,
 				C9290991293DFFD100679542 /* Assets.xcassets */,
@@ -181,9 +181,9 @@
 				C9334FB0298E818D009078A8 /* SettingsView.swift in Sources */,
 				C9D6FCB929901D8000BDAEFD /* BackgroundMusic.swift in Sources */,
 				C9D6FCBB2990499B00BDAEFD /* SharedParameters.swift in Sources */,
+				C9D6FCBD29905CA800BDAEFD /* IAPlayerView.swift in Sources */,
 				C981226D298735600007F6D2 /* TwoPlayerView.swift in Sources */,
 				C9334FB6298E8C64009078A8 /* VolumeSlider.swift in Sources */,
-				C9290990293DFFD000679542 /* ContentView.swift in Sources */,
 				C9334FBA298E9007009078A8 /* MusicView.swift in Sources */,
 				C9C54B202946754800B4636F /* MenuView.swift in Sources */,
 				C929098E293DFFD000679542 /* Morpion_GameApp.swift in Sources */,

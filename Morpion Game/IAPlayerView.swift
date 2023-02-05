@@ -1,8 +1,17 @@
 //
+//  IAPlayerView.swift
+//  Morpion Game
+//
+//  Created by Frédéric ALPHONSE on 05/02/2023.
+//
+
+//
 //  TwoPlayerView.swift
 //  Morpion Game
 //
 //  Created by Frédéric ALPHONSE on 30/01/2023.
+//
+
 //
 //  ContentView.swift
 //  Morpion Game
@@ -11,16 +20,16 @@
 //
 
 import SwiftUI
+import Darwin
 
-struct TwoPlayerView: View {
-    
-  
+struct IAPlayerView: View {
     //----------------------------------
     //Variables
     
+
     @ObservedObject var sharedState: SharedParameters
-    
     @State var currentPlayer : String
+    
     @State var Current_color : Color
     @State var board = [[String]](repeating: [String](repeating: "", count: 3), count: 3)
     @State var color_b = [[Color.blue, Color.blue, Color.blue],
@@ -33,7 +42,7 @@ struct TwoPlayerView: View {
     //Score for players
     @State private var ScoreP1 = 0
     @State private var ScoreP2 = 0
-    
+    @State private var showIAPopUp = false
     @State private var Win_Text = ""
     
     //----------------------------------
@@ -43,8 +52,79 @@ struct TwoPlayerView: View {
             self._currentPlayer = State(initialValue: sharedState.iconP1)
         self._Current_color = State(initialValue: sharedState.C_P1)
         }
+
+    func IA_Morpion() -> Bool {
+        let result = checkWin()
+        if result == false {
+            var bestMove = [-1, -1]
+            var bestScore = Int.min
+
+            for i in 0..<3 {
+                for j in 0..<3 {
+                    if board[i][j] == "" {
+                        board[i][j] = sharedState.iconP2
+                        let score = minimax(depth: 0, isMaximizing: false)
+                        board[i][j] = ""
+
+                        if score > bestScore {
+                            bestScore = score
+                            bestMove = [i, j]
+                        }
+                    }
+                }
+            }
+
+            if bestMove[0] != -1 && bestMove[1] != -1 {
+                board[bestMove[0]][bestMove[1]] = sharedState.iconP2
+                return true
+            }
+        }
+        return false
+    }
+
     //----------------------------------
     //Functions
+    func minimax( depth: Int, isMaximizing: Bool) -> Int {
+        let result = checkWin()
+        
+        if result == true {
+            return 10 - depth
+        } else if result == false {
+            return -10 + depth
+        } else {
+            if isMaximizing {
+                var bestScore = Int.min
+                for i in 0..<9 {
+                    if board[i/3][i%3] == "" {
+                        let row = i/3
+                        let col = i%3
+                        board[row][col] = sharedState.iconP2
+                        
+                        let score = minimax(depth: depth + 1, isMaximizing: false)
+                        board[row][col] = ""
+                        bestScore = max(score, bestScore)
+                    }
+                }
+                return bestScore
+            } else {
+                var bestScore = Int.max
+                for i in 0..<9 {
+                    if board[i/3][i%3] == "" {
+                        let row = i/3
+                        let col = i%3
+                        board[row][col] = sharedState.iconP2
+                        
+                        let score = minimax( depth: depth + 1, isMaximizing: true)
+                        board[row][col] = ""
+                        bestScore = min(score, bestScore)
+                    }
+                }
+                return bestScore
+            }
+        }
+    }
+
+    
     func checkWin() -> Bool {
             // Vérifier les lignes
             for row in 0...2 {
@@ -109,6 +189,19 @@ struct TwoPlayerView: View {
             return false
             
         }
+    func coloringBoard() {
+        for col in 0...2 {
+            for row in 0...2 {
+                if (board[row][col] == sharedState.iconP2 ){
+                    color_b [row][col] = sharedState.C_P2
+                }
+                else if ( board[row][col] == sharedState.iconP1){
+                    color_b [row][col] = sharedState.C_P1
+                }
+            }
+        }
+    }
+    
     func resetBoard() {
         board = [["", "", ""],
                  ["", "", ""],
@@ -125,32 +218,35 @@ struct TwoPlayerView: View {
         
     }
     func round_game () {
-            print(currentPlayer)
+        print(currentPlayer)
     
         if(currentPlayer==sharedState.iconP1){
-            //2P
-            currentPlayer = sharedState.iconP2
+            //IA
+            IA_Morpion()
+            coloringBoard()
+            showIAPopUp = checkWin()
+            
             Win_Text = "Player 2 WON"
             Current_color = sharedState.C_P2
         }
         
-        else{
+        else if (currentPlayer == sharedState.iconP2){
             //1P
+            
             currentPlayer = sharedState.iconP1
             Win_Text = "Player 1 WON"
             Current_color = sharedState.C_P1
+            
         }
         
     }
     
-    
-    
     //----------------------------------
     //View
     var body: some View {
-        
+      
         VStack (){
-        
+            
             Button{
                 resetBoard()
             }label: {
@@ -177,7 +273,6 @@ struct TwoPlayerView: View {
                                 
                             round_game ()
                             showPopUp=checkWin()
-                            
                             
                         } label: {
                             Image(systemName:board[0][0])
@@ -431,7 +526,7 @@ struct TwoPlayerView: View {
                     Image(systemName: sharedState.iconP2)
                         .foregroundColor(sharedState.C_P2)
                         .font(.largeTitle)
-                    Text("P2")
+                    Text("CPU")
                     
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -448,11 +543,12 @@ struct TwoPlayerView: View {
         .padding()
         .onAppear{resetBoard()}
     }
+    
 }
 
-struct TwoPlayerView_Previews: PreviewProvider {
+struct IAPlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        TwoPlayerView(sharedState: SharedParameters())
+        IAPlayerView(sharedState: SharedParameters())
     }
 }
 
